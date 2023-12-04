@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import LoginForm from "@/components/LoginForm";
-import RegistrationForm from "@/components/RegistrationForm";
 import Link from "next/link";
 
 export default function AuthenticationPage() {
@@ -39,7 +37,7 @@ export default function AuthenticationPage() {
 
       <Link href={"/register"}>
         <button
-          className="w-72 rounded-xl bg-stone-300 py-3 text-base text-stone-900 transition-all duration-300 ease-linear hover:bg-stone-500 hover:text-white"
+          className="w-72 rounded-xl bg-stone-300 py-3 text-base text-stone-900 transition-all duration-300 ease-linear hover:bg-stone-200"
           onClick={() => setIsRegistered(true)}
         >
           Criar conta
