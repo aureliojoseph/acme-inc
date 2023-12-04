@@ -3,8 +3,8 @@ import { verbs, adjectives } from "@/utils/words";
 export function generateProductNames(): string[] {
   const productNames = new Set<string>();
 
-  verbs.forEach((verb) => {
-    adjectives.forEach((adjective) => {
+  verbs.forEach((verb: string) => {
+    adjectives.forEach((adjective: string) => {
       productNames.add(`${verb} ${adjective}`);
     });
   });
@@ -12,34 +12,44 @@ export function generateProductNames(): string[] {
   return Array.from(productNames);
 }
 
-const productNames = generateProductNames();
+const productNames: string[] = generateProductNames();
 
 export function generateRandomDescription(
   minLength: number = 20,
   maxLength: number = 500,
 ): string {
-  let text = "";
+  let text: string = "";
 
   while (text.length < minLength || text.length > maxLength) {
-    const verb = verbs[Math.floor(Math.random() * verbs.length)];
-    const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+    const verb: string = verbs[Math.floor(Math.random() * verbs.length)];
+    const adjective: string =
+      adjectives[Math.floor(Math.random() * adjectives.length)];
     text += `${verb} ${adjective} `;
   }
 
   return text.trim();
 }
 
-export function generatePrice() {
-  const name =
+export function generatePrice(): string {
+  const name: string =
     generateProductNames()[
       Math.floor(Math.random() * generateProductNames().length)
     ];
-  const description = generateRandomDescription();
-  const nameLength = name.split(" ").length;
-  const descrLength = description.length;
-  const price = 10 + nameLength * ((500 - descrLength) / (4 - nameLength));
+  const description: string = generateRandomDescription();
+  const nameLength: number = name.split(" ").length;
+  const descrLength: number = description.length;
+  const price: number =
+    10 + nameLength * ((500 - descrLength) / (4 - nameLength));
   return price.toFixed(2);
 }
+
+const randomPhotos = (): string => {
+  const randomWidth: number = Math.floor(Math.random() * 500) + 200;
+  const randomHeight: number = Math.floor(Math.random() * 500) + 220;
+  const randomImageUrl = `https://picsum.photos/${randomWidth}/${randomHeight}`;
+
+  return randomImageUrl;
+};
 
 let myProducts: {
   id: number;
@@ -50,10 +60,10 @@ let myProducts: {
 }[] = [];
 
 for (let i = 0; i < productNames.length; i++) {
-  const name = productNames[i];
-  const description = generateRandomDescription();
-  const price = generatePrice();
-  const url = "https://test-api.com";
+  const name: string = productNames[i];
+  const description: string = generateRandomDescription();
+  const price: string = generatePrice();
+  const url: string = randomPhotos();
 
   const product = {
     id: i + 1,
@@ -67,3 +77,10 @@ for (let i = 0; i < productNames.length; i++) {
 }
 
 export default myProducts;
+
+const fs = require("fs");
+
+fs.writeFile("public/data.json", JSON.stringify(myProducts), (err: any) => {
+  if (err) throw err;
+  console.log("Data written to file");
+});
