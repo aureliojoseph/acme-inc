@@ -63,6 +63,27 @@ function calculatePrice() {
   return price.toFixed(2);
 }
 
+// Function to fetch random image
+// API KEY: edde1ae5-aaf1-4a81-bbea-9253f2427563
+// const deepai = require("deepai");
+// deepai.setApiKey("edde1ae5-aaf1-4a81-bbea-9253f2427563");
+
+// async function getRandomImage() {
+//   const productName =
+//     productNames[Math.floor(Math.random() * productNames.length)];
+//   const productDescription = randomDescription();
+
+//   const resp = await deepai.callStandardApi("text2img", {
+//     text: `${productName} ${productDescription}`,
+//     negative_prompt: "No people",
+//     grid_size: "4x4",
+//     width: "160",
+//     height: "160",
+//   });
+
+//   return resp;
+// }
+
 // Initialize an empty array to store the products
 let products: {
   id: number;
