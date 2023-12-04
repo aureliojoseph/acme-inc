@@ -1,11 +1,14 @@
-import ProductsList from "@/components/ProductsList";
-import products from "@/services/api/productsApi";
+import MyProducts from "@/components/MyProducts";
+import myProducts from "@/services/api/api";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* <ProductsList products={products} /> */}
-      <h2>All Products ({products.length})</h2>
+    <main className="flex min-h-screen flex-col justify-between p-10">
+      <h2 className="mb-10 text-left text-2xl">
+        All Products: ({myProducts.length})
+      </h2>
+
+      <MyProducts myProducts={myProducts} />
     </main>
   );
 }
