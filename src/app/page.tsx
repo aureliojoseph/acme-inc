@@ -14,11 +14,13 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-    if (!user || !token) {
-      localStorage.clear();
-    }
+    // Implement Auth logic
+    // const user = localStorage.getItem("user");
+    // const token = localStorage.getItem("token");
+    // if (!user || !token) {
+    //   localStorage.clear();
+    // }
+    localStorage.clear();
   }, []);
 
   return (

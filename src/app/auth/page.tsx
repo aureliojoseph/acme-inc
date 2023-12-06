@@ -8,12 +8,12 @@ export default function AuthenticationPage() {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
 
   const handleRegistration = (user: any) => {
-    // handle registration logic here
+    // Implement registration logic
     setIsRegistered(true);
   };
 
   const handleLogin = (user: any) => {
-    // handle login logic here
+    // Implement login logic
     setIsRegistered(true);
   };
 

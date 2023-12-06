@@ -11,13 +11,12 @@ export default function LoginPage({ onLogin, onClose }: any) {
     e.preventDefault();
 
     // Implement Login logic
-
-    if (email === "admin" && password === "password") {
-      localStorage.clear();
-      window.location.href = "/";
-    } else {
-      alert("Usuário ou Senha inválidos");
-    }
+    // if (email === "admin" && password === "password") {
+    //   localStorage.clear();
+    //   window.location.href = "/";
+    // } else {
+    //   alert("Usuário ou Senha inválidos");
+    // }
   };
 
   return (

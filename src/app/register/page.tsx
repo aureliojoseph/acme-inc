@@ -14,11 +14,11 @@ export default function RegisterPage({ onRegister }: any) {
 
     // Implement Register logic
 
-    if (password !== passwordConfirm) {
-      alert("Sua senha está incorreta");
-      return;
-    }
-    onRegister({ name, email, telephone, password });
+    // if (password !== passwordConfirm) {
+    //   alert("Sua senha está incorreta");
+    //   return;
+    // }
+    // onRegister({ name, email, telephone, password });
   };
 
   return (
