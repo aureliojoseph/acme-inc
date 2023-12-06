@@ -1,4 +1,4 @@
-export const verbs = [
+export const nouns = [
   "Armário",
   "Navio",
   "Mala",
