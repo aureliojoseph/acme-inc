@@ -25,7 +25,11 @@ export default function ProductDisplayPage() {
 
   const [isIconClicked, setIsIconClicked] = useState(false);
 
-  const { setFavorite, setBag } = useContext(ShopContext);
+  const context = useContext(ShopContext);
+
+  if (!context) return null;
+
+  const { setFavorite, setBag } = context;
 
   const addToFavorite = () => {
     setIsIconClicked(!isIconClicked);

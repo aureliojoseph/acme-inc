@@ -6,7 +6,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 export default function CheckoutPage() {
-  const { bag, setBag } = useContext(ShopContext);
+  const context = useContext(ShopContext);
+
+  if (!context) return null;
+
+  const { bag, setBag } = context;
 
   const handleDelete = (productToDelete: any) => {
     const newBag = bag.filter(

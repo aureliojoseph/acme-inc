@@ -17,7 +17,12 @@ import {
 export default function NavBar() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isFavoriteOpen, setIsFavoriteOpen] = useState(false);
-  const { favorite } = useContext(ShopContext);
+
+  const context = useContext(ShopContext);
+
+  if (!context) return null;
+
+  const { favorite } = context;
 
   const handleSearchClick = () => {
     setIsSearchOpen(!isSearchOpen);

@@ -5,7 +5,11 @@ import { ShopContext } from "@/services/providers/ShopContext";
 import { useContext } from "react";
 
 export default function Favorite({ setIsFavoriteOpen }: any) {
-  const { favorite, setFavorite } = useContext(ShopContext);
+  const context = useContext(ShopContext);
+
+  if (!context) return null;
+
+  const { favorite, setFavorite } = context;
 
   const handleCloseFavorite = () => {
     setIsFavoriteOpen(false);
