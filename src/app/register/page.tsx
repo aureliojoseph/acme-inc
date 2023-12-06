@@ -11,8 +11,11 @@ export default function RegisterPage({ onRegister }: any) {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
+    // Implement Register logic
+
     if (password !== passwordConfirm) {
-      alert("Passwords don't match");
+      alert("Sua senha está incorreta");
       return;
     }
     onRegister({ name, email, telephone, password });

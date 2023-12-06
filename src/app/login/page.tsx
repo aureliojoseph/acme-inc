@@ -1,20 +1,28 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginPage({ onLogin, onClose }: any) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleLogin = (e: any) => {
     e.preventDefault();
-    onLogin({ email, password });
+
+    // Implement Login logic
+
+    if (email === "admin" && password === "password") {
+      localStorage.clear();
+      window.location.href = "/";
+    } else {
+      alert("Usuário ou Senha inválidos");
+    }
   };
 
   return (
     <div className="flex flex-col items-center gap-3 py-10">
-      <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-5" onSubmit={handleLogin}>
         <label className="mt-3 flex flex-col gap-2 text-xl">
           Email:
           <input
@@ -28,7 +36,7 @@ export default function LoginPage({ onLogin, onClose }: any) {
         </label>
 
         <label className="mt-3 flex flex-col gap-2 text-xl">
-          Password:
+          Senha:
           <input
             className="h-10 w-72 rounded-lg border border-stone-200 bg-stone-100 px-2 text-xs text-stone-900 outline-none"
             placeholder="Digite sua senha"
@@ -51,7 +59,7 @@ export default function LoginPage({ onLogin, onClose }: any) {
           onClick={onClose}
           type="submit"
         >
-          Login
+          Entrar
         </button>
       </form>
     </div>

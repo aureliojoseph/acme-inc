@@ -29,7 +29,7 @@ export default function AuthenticationPage() {
           className="w-72 rounded-xl bg-stone-800 py-3 text-base text-stone-100 transition-all duration-300 ease-linear hover:bg-stone-600 hover:text-stone-50"
           onClick={() => setIsLoginOpen(true)}
         >
-          Login
+          Fazer Login
         </button>
       </Link>
 
