@@ -18,7 +18,6 @@ The application was designed with Next.js, React's recommended framework.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 
@@ -33,7 +32,7 @@ The application was designed with Next.js, React's recommended framework.
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/acme-shopping-app.git
+git clone https://github.com/aureliojoseph/acme-inc.git
 ```
 
 2. Navigate to the project directory:
