@@ -13,6 +13,14 @@ export default function Home() {
       .then((myProducts: any) => setMyProducts(myProducts));
   }, []);
 
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
+    if (!user || !token) {
+      localStorage.clear();
+    }
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col justify-between p-10">
       {!myProducts ? (
