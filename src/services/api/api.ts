@@ -1,9 +1,9 @@
-import { verbs, adjectives } from "@/utils/words";
+import { nouns, adjectives } from "@/utils/words";
 
 export function generateProductNames(): string[] {
   const productNames = new Set<string>();
 
-  verbs.forEach((verb: string) => {
+  nouns.forEach((verb: string) => {
     adjectives.forEach((adjective: string) => {
       productNames.add(`${verb} ${adjective}`);
     });
@@ -15,13 +15,13 @@ export function generateProductNames(): string[] {
 const productNames: string[] = generateProductNames();
 
 export function generateRandomDescription(
-  minLength: number = 20,
+  minLength: number = 150,
   maxLength: number = 500,
 ): string {
   let text: string = "";
 
   while (text.length < minLength || text.length > maxLength) {
-    const verb: string = verbs[Math.floor(Math.random() * verbs.length)];
+    const verb: string = nouns[Math.floor(Math.random() * nouns.length)];
     const adjective: string =
       adjectives[Math.floor(Math.random() * adjectives.length)];
     text += `${verb} ${adjective} `;
