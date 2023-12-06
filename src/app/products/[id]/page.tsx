@@ -1,18 +1,13 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Loading from "@/components/Loading";
 import Link from "next/link";
+import Image from "next/image";
 import { HiHeart, HiOutlineHeart, HiShoppingBag } from "react-icons/hi2";
-
-interface Product {
-  id: number;
-  name: string;
-  description: string;
-  price: string;
-  url: string;
-}
+import { ShopContext } from "@/services/providers/ShopContext";
+import { Product } from "@/utils/product";
 
 export default function ProductDisplayPage() {
   const { id } = useParams<{ id: string }>();
@@ -30,8 +25,15 @@ export default function ProductDisplayPage() {
 
   const [isIconClicked, setIsIconClicked] = useState(false);
 
-  const toggleIconClick = () => {
+  const { setFavorite, setBag } = useContext(ShopContext);
+
+  const addToFavorite = () => {
     setIsIconClicked(!isIconClicked);
+    setFavorite((prevFavorite: any) => [...prevFavorite, product]);
+  };
+
+  const addToBag = () => {
+    setBag((prevBag: any) => [...prevBag, product]);
   };
 
   if (!product) {
@@ -41,7 +43,7 @@ export default function ProductDisplayPage() {
   if (product) {
     return (
       <div className="flex items-center justify-evenly p-10">
-        <img
+        <Image
           key={product.id}
           className="aspect-square"
           width={400}
@@ -62,7 +64,7 @@ export default function ProductDisplayPage() {
 
           <div className="flex items-center justify-between pb-4">
             <p className="text-center text-4xl font-bold">R$ {product.price}</p>
-            <button onClick={toggleIconClick}>
+            <button onClick={addToFavorite}>
               {isIconClicked ? (
                 <HiHeart className="cursor-pointer rounded-full p-1 text-4xl text-stone-700 transition-all duration-300 ease-linear hover:bg-stone-400/80" />
               ) : (
@@ -72,20 +74,24 @@ export default function ProductDisplayPage() {
           </div>
 
           <div className="flex flex-col gap-5">
-            <Link href={"/cart"}>
-              <button className="flex w-72 items-center justify-center gap-3 rounded-xl bg-stone-800 py-3 text-base text-stone-100 transition-all duration-300 ease-linear hover:bg-stone-600 hover:text-stone-50">
+            <Link href={"/checkout"}>
+              <button
+                onClick={addToBag}
+                className="flex w-72 items-center justify-center gap-3 rounded-xl bg-stone-800 py-3 text-base text-stone-100 transition-all duration-300 ease-linear hover:bg-stone-600 hover:text-stone-50"
+              >
                 Comprar
               </button>
             </Link>
 
-            <Link href={"/cart"}>
-              <button className="flex w-72 items-center justify-center gap-3 rounded-xl bg-stone-300 py-3 text-base text-stone-900 transition-all duration-300 ease-linear hover:bg-stone-200">
-                Adicionar à sacola
-                <span>
-                  <HiShoppingBag />
-                </span>
-              </button>
-            </Link>
+            <button
+              onClick={addToBag}
+              className="flex w-72 items-center justify-center gap-3 rounded-xl bg-stone-300 py-3 text-base text-stone-900 transition-all duration-300 ease-linear hover:bg-stone-200"
+            >
+              Adicionar à sacola
+              <span>
+                <HiShoppingBag />
+              </span>
+            </button>
           </div>
         </div>
       </div>
