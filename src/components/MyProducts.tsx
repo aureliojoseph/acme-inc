@@ -46,7 +46,7 @@ export default function MyProducts({ myProducts }: any) {
             className="flex w-72 items-center justify-center gap-3 rounded-xl bg-stone-800 py-3 text-base text-stone-100 transition-all duration-300 ease-linear hover:bg-stone-600 hover:text-stone-50"
             onClick={loadMore}
           >
-            Load more
+            Carregar mais
           </button>
         )}
 
@@ -54,7 +54,7 @@ export default function MyProducts({ myProducts }: any) {
           className="flex w-72 items-center justify-center gap-3 rounded-xl bg-stone-300 py-3 text-base text-stone-900 transition-all duration-300 ease-linear hover:bg-stone-200"
           onClick={scrollToTop}
         >
-          Back to Top
+          Voltar ao topo
         </button>
       </div>
     </>
