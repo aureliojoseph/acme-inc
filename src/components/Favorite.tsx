@@ -20,7 +20,10 @@ export default function Favorite({ setIsFavoriteOpen }: any) {
       (product: any) => product.id !== productToUnfavorite.id,
     );
     setFavorite(newFavotire);
-    localStorage.setItem("favorite", JSON.stringify(newFavotire));
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("favorite", JSON.stringify(newFavotire));
+    }
   };
 
   return (

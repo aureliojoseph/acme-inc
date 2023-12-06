@@ -15,12 +15,13 @@ export default function Home() {
 
   useEffect(() => {
     // Implement Auth logic
-    // const user = localStorage.getItem("user");
-    // const token = localStorage.getItem("token");
-    // if (!user || !token) {
-    //   localStorage.clear();
-    // }
-    localStorage.clear();
+    if (typeof window !== "undefined") {
+      const user = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+      if (!user || !token) {
+        localStorage.clear();
+      }
+    }
   }, []);
 
   return (

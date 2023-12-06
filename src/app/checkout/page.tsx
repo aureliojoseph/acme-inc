@@ -17,7 +17,10 @@ export default function CheckoutPage() {
       (product: any) => product.id !== productToDelete.id,
     );
     setBag(newBag);
-    localStorage.setItem("bag", JSON.stringify(newBag));
+
+    if (typeof window !== "undefined") {
+      localStorage.setItem("bag", JSON.stringify(newBag));
+    }
   };
 
   const totalPrice = bag.reduce(
